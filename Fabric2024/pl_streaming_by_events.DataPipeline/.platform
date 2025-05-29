@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "pl_streaming_by_events"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "94180701-8558-8b29-4a23-996812d2c931"
+  }
+}

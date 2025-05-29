@@ -1,0 +1,37 @@
+{
+  "sources": [
+    {
+      "id": "5bc63e6f-3a84-42aa-82b7-3d67db1120c0",
+      "name": "new-source",
+      "type": "FabricOneLakeEvents",
+      "properties": {
+        "tenantId": "a18e6d03-7c12-48a0-88c9-39f123353ed6",
+        "workspaceId": "01776804-81ee-4650-a9ff-167b46852a39",
+        "itemId": "cf63c3ea-ff4b-4f91-909c-26ba8cf13661",
+        "oneLakePaths": [
+          "/Files"
+        ],
+        "includedEventTypes": [
+          "Microsoft.Fabric.OneLake.FileCreated"
+        ],
+        "filters": []
+      }
+    }
+  ],
+  "destinations": [],
+  "streams": [
+    {
+      "id": "11b2f0d2-9d0b-40dd-8e17-480639a7afd9",
+      "name": "es_streaming_books-stream",
+      "type": "DefaultStream",
+      "properties": {},
+      "inputNodes": [
+        {
+          "name": "new-source"
+        }
+      ]
+    }
+  ],
+  "operators": [],
+  "compatibilityLevel": "1.0"
+}

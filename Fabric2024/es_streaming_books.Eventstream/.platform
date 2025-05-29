@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Eventstream",
+    "displayName": "es_streaming_books"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "269371c3-ce27-ac77-49e5-eeb5049b1968"
+  }
+}
