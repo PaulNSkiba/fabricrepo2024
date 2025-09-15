@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Eventstream",
+    "displayName": "KuCoinStream"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "d53a435e-d804-bfe3-481e-d3df87749f7e"
+  }
+}

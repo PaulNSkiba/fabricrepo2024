@@ -1,0 +1,258 @@
+{
+  "sources": [
+    {
+      "id": "8d06127f-f892-4f08-a5c7-a046eceb2fa5",
+      "name": "KuCoinEndpoint",
+      "type": "CustomEndpoint",
+      "properties": {}
+    }
+  ],
+  "destinations": [
+    {
+      "id": "b492c6bc-c0ad-4314-86f4-b3a9b922b7c7",
+      "name": "Eventhouse",
+      "type": "Eventhouse",
+      "properties": {
+        "dataIngestionMode": "ProcessedIngestion",
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "itemId": "07b4a069-b268-8533-41ae-4d7e169ec51e",
+        "databaseName": "KuCoinEventhouse",
+        "tableName": "KuCoinTable",
+        "inputSerialization": {
+          "type": "Json",
+          "properties": {
+            "encoding": "UTF8"
+          }
+        }
+      },
+      "inputNodes": [
+        {
+          "name": "ManageFields"
+        }
+      ],
+      "inputSchemas": [
+        {
+          "name": "ManageFields",
+          "schema": {
+            "columns": [
+              {
+                "name": "source",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "pair",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "price",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "timestamp",
+                "type": "DateTime",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "date",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "time",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "streams": [
+    {
+      "id": "4f01a60e-fa93-4584-b2fe-740ab0dc6c35",
+      "name": "KuCoinStream-stream",
+      "type": "DefaultStream",
+      "properties": {},
+      "inputNodes": [
+        {
+          "name": "KuCoinEndpoint"
+        }
+      ]
+    }
+  ],
+  "operators": [
+    {
+      "name": "ManageFields",
+      "type": "ManageFields",
+      "inputNodes": [
+        {
+          "name": "KuCoinStream-stream"
+        }
+      ],
+      "properties": {
+        "columns": [
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "source",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "source"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "pair",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "pair"
+          },
+          {
+            "type": "Cast",
+            "properties": {
+              "targetDataType": "Float",
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "price",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "price"
+          },
+          {
+            "type": "Cast",
+            "properties": {
+              "targetDataType": "DateTime",
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "timestamp",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "timestamp"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "date",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "date"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "time",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "time"
+          }
+        ]
+      },
+      "inputSchemas": [
+        {
+          "name": "KuCoinStream-stream",
+          "schema": {
+            "columns": [
+              {
+                "name": "source",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "pair",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "price",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "origmsg",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "timestamp",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "event_id",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "date",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "time",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "EventProcessedUtcTime",
+                "type": "DateTime",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "PartitionId",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "EventEnqueuedUtcTime",
+                "type": "DateTime",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "compatibilityLevel": "1.1"
+}
