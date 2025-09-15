@@ -7,7 +7,7 @@
         "clusterUri": "",
         "type": "Fabric",
         "databaseItemId": "a739a323-1b34-93cb-4cd5-a485ab658e08",
-        "databaseItemName": "eh_dp700_1"
+        "databaseItemName": "eh_dp700"
       }
     ],
     "tabs": [
@@ -19,7 +19,7 @@
       },
       {
         "id": "a5441eed-7a04-437a-b31e-a7ad2f4381e2",
-        "content": "// Use 'take' to view a sample number of records in the table and check the data.\nassignments\n\n",
+        "content": "// Use 'take' to view a sample number of records in the table and check the data.\nassignments\n\n--\nexplain\nSELECT *\nFROM employees\nORDER BY name\n\nemployees\n| project employee_id, name, department_id, hire_date, salary\n| sort by name asc nulls first",
         "title": "",
         "dataSourceId": "598989e6-01ad-4464-834e-59b73d95cfbf"
       }
