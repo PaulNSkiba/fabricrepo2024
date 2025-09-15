@@ -15,6 +15,7 @@
 %pip install azure-servicebus requests
 %pip install requests
 
+
 # METADATA ********************
 
 # META {
@@ -55,33 +56,6 @@ for pair in top_pairs:
         print(f"{pair}: {price}")
     except Exception as e:
         print(f"Ошибка при получении {pair}: {e}")
-
-# METADATA ********************
-
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }
-
-# CELL ********************
-
-# Welcome to your new notebook
-# Type here in the cell editor to add code!
-print("Кластер запускается...")
-from pyspark.sql import SparkSession
-
-spark = SparkSession.builder.getOrCreate()
-print("✅ Spark активен. Версия:", spark.version)
-
-import os
-print("Spark environment:", os.environ.get("SPARK_HOME"))
-
-from notebookutils import mssparkutils
-try:
-    from mssparkutils.credentials import getSecret
-    print("✅ Модуль доступен")
-except Exception as e:
-    print("❌ Ошибка:", str(e))
 
 
 # METADATA ********************
@@ -216,6 +190,26 @@ except Exception as e:
 finally:
     # Close the producer
     producer.close()
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+from notebookutils import mssparkutils
+
+vault_name = "https://kv-eventhub-streaming.vault.azure.net/"  # Пример: без протокола и домена
+secret_name = "eventhub-connectionstr"
+
+# Получение секрета
+connection_str = mssparkutils.credentials.getSecret(vault_name, secret_name)
+print("✅ Секрет получен:", connection_str[:20] + "...")
+
+
 
 # METADATA ********************
 
