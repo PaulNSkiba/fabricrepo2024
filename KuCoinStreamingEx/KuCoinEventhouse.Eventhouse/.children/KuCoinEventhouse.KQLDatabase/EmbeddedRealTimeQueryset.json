@@ -1,0 +1,28 @@
+{
+  "queryset": {
+    "version": "1.0.0",
+    "dataSources": [
+      {
+        "id": "407d5b30-a1a9-470e-b40c-cf6a62495c7a",
+        "clusterUri": "https://trd-7dmh6d13urgfwuhrwk.z7.kusto.fabric.microsoft.com",
+        "type": "Fabric",
+        "databaseItemId": "169ec51e-4d7e-41ae-8533-b26807b4a069",
+        "databaseItemName": "KuCoinEventhouse"
+      }
+    ],
+    "tabs": [
+      {
+        "id": "7fb25e35-b8b4-4a41-9723-09bd2c7f45fe",
+        "content": "//***********************************************************************************************************\n// Here are two articles to help you get started with KQL:\n// KQL reference guide - https://aka.ms/KQLguide\n// SQL - KQL conversions - https://aka.ms/sqlcheatsheet\n//***********************************************************************************************************\n\n// Use \"take\" to view a sample number of records in the table and check the data.\nYOUR_TABLE_HERE\n| take 100\n\n// See how many records are in the table.\nYOUR_TABLE_HERE\n| count\n\n// This query returns the number of ingestions per hour in the given table.\nYOUR_TABLE_HERE\n| summarize IngestionCount = count() by bin(ingestion_time(), 1h)\n\n",
+        "title": "Tab",
+        "dataSourceId": "407d5b30-a1a9-470e-b40c-cf6a62495c7a"
+      },
+      {
+        "id": "8e43b194-bdae-4354-b1e2-7768fb0bc74b",
+        "content": "// Use 'take' to view a sample number of records in the table and check the data.\nKuCoinTable\n| sort by  timestamp\n| take 100\n\n\n// View a representation of the schema as a table with column names, column type, and data type.\nKuCoinTable\n| getschema\n\n\n\n// See the most recent data - records ingested in the last 24 hours.\nKuCoinTable\n| where ingestion_time() between (now(-1d) .. now())\n| summarize count()",
+        "title": "",
+        "dataSourceId": "407d5b30-a1a9-470e-b40c-cf6a62495c7a"
+      }
+    ]
+  }
+}
