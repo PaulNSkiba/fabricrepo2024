@@ -11,6 +11,19 @@
 
 # CELL ********************
 
+%pip install python-kucoin
+%pip install azure-servicebus requests
+%pip install requests
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
 # Welcome to your new notebook
 # Type here in the cell editor to add code!
 print("Кластер запускается...")
