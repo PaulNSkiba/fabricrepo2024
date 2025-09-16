@@ -1,0 +1,130 @@
+{
+  "schema_version": 63,
+  "tiles": [
+    {
+      "id": "192fbb6a-a5ed-4fe0-bdf6-2b76b2c0e378",
+      "title": "CryptoStat",
+      "visualType": "table",
+      "pageId": "2b3d6574-d160-4d7b-ad1e-6477ca05f2ed",
+      "layout": {
+        "x": 0,
+        "y": 0,
+        "width": 23,
+        "height": 9
+      },
+      "queryRef": {
+        "kind": "query",
+        "queryId": "493193c9-d953-4dc5-be33-4c1db6f1d628"
+      },
+      "visualOptions": {
+        "selectedDataOnLoad": {
+          "all": true,
+          "limit": 10
+        }
+      }
+    },
+    {
+      "id": "b7230f61-11b1-443e-a0fa-6e0714dbe07b",
+      "title": "Crypto LineChart",
+      "visualType": "line",
+      "pageId": "2b3d6574-d160-4d7b-ad1e-6477ca05f2ed",
+      "layout": {
+        "x": 0,
+        "y": 9,
+        "width": 23,
+        "height": 10
+      },
+      "queryRef": {
+        "kind": "query",
+        "queryId": "6b106dd4-3180-4d34-9730-347a993db58d"
+      },
+      "visualOptions": {
+        "multipleYAxes": {
+          "base": {
+            "id": "-1",
+            "label": "",
+            "columns": [],
+            "yAxisMaximumValue": null,
+            "yAxisMinimumValue": null,
+            "yAxisScale": "linear",
+            "horizontalLines": []
+          },
+          "additional": [],
+          "showMultiplePanels": false
+        },
+        "hideLegend": false,
+        "legendLocation": "bottom",
+        "xColumnTitle": "",
+        "xColumn": "timestamp",
+        "yColumns": [
+          "price"
+        ],
+        "seriesColumns": [
+          "pair"
+        ],
+        "xAxisScale": "linear",
+        "verticalLine": "",
+        "crossFilter": [],
+        "crossFilterDisabled": false,
+        "drillthroughDisabled": false,
+        "drillthrough": []
+      }
+    }
+  ],
+  "baseQueries": [],
+  "parameters": [
+    {
+      "kind": "duration",
+      "id": "a0cf30a1-ac56-48b7-b5a4-d8642f2a5fac",
+      "displayName": "Time range",
+      "description": "",
+      "beginVariableName": "_startTime",
+      "endVariableName": "_endTime",
+      "defaultValue": {
+        "kind": "dynamic",
+        "count": 1,
+        "unit": "hours"
+      },
+      "showOnPages": {
+        "kind": "all"
+      }
+    }
+  ],
+  "dataSources": [
+    {
+      "id": "59c624b5-9e10-45f3-a6fc-bb9d8d90f6f2",
+      "kind": "kusto-trident",
+      "scopeId": "kusto-trident",
+      "clusterUri": "",
+      "database": "07b4a069-b268-8533-41ae-4d7e169ec51e",
+      "name": "KuCoinEventhouse",
+      "workspace": "00000000-0000-0000-0000-000000000000"
+    }
+  ],
+  "pages": [
+    {
+      "name": "Page 1",
+      "id": "2b3d6574-d160-4d7b-ad1e-6477ca05f2ed"
+    }
+  ],
+  "queries": [
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "59c624b5-9e10-45f3-a6fc-bb9d8d90f6f2"
+      },
+      "text": "KuCoinTable\n| project pair, price, timestamp, ['date'], ['time']",
+      "id": "493193c9-d953-4dc5-be33-4c1db6f1d628",
+      "usedVariables": []
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "59c624b5-9e10-45f3-a6fc-bb9d8d90f6f2"
+      },
+      "text": "KuCoinTable\n| project source, pair, price, timestamp, ['date'], ['time']\n",
+      "id": "6b106dd4-3180-4d34-9730-347a993db58d",
+      "usedVariables": []
+    }
+  ]
+}

@@ -19,7 +19,13 @@
       },
       {
         "id": "8e43b194-bdae-4354-b1e2-7768fb0bc74b",
-        "content": "// Use 'take' to view a sample number of records in the table and check the data.\nKuCoinTable\n| sort by  timestamp\n| take 100\n\n\n// View a representation of the schema as a table with column names, column type, and data type.\nKuCoinTable\n| getschema\n\n\n\n// See the most recent data - records ingested in the last 24 hours.\nKuCoinTable\n| where ingestion_time() between (now(-1d) .. now())\n| summarize count()",
+        "content": "// Use 'take' to view a sample number of records in the table and check the data.\nKuCoinTable\n| sort by  timestamp\n| take 100\n\n\n// View a representation of the schema as a table with column names, column type, and data type.\nKuCoinTable\n| getschema\n\n\n\n// See the most recent data - records ingested in the last 24 hours.\nKuCoinTable\n| where ingestion_time() between (now(-1d) .. now())\n| summarize count()\n\nKuCoinTable\n| count \n\nSELECT TOP 10 * FROM KuCoinTable ORDER BY date DESC, time DESC\n\nEXPLAIN\nSELECT TOP 10 * FROM KuCoinTable ORDER BY date DESC, time DESC\n\nKuCoinTable\n| project source, pair, price, timestamp, ['date'], ['time']\n| sort by ['date'] desc nulls last, ['time'] desc nulls last\n| take int(10)",
+        "title": "",
+        "dataSourceId": "407d5b30-a1a9-470e-b40c-cf6a62495c7a"
+      },
+      {
+        "id": "c9c941c5-6ddb-427f-824e-1c4d860158d7",
+        "content": "KuCoinTable\n| project pair, price, timestamp, ['date'], ['time']",
         "title": "",
         "dataSourceId": "407d5b30-a1a9-470e-b40c-cf6a62495c7a"
       }
